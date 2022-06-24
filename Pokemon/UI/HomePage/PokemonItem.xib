@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="pokemon_item" id="eOF-62-BuL" customClass="PokemonItem" customModule="Pokemon" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="eOF-62-BuL" id="Bq0-ur-bgh">
+                <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Index" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qlD-Nm-unu">
+                        <rect key="frame" x="20" y="11.5" width="42" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="42" id="WkJ-Yf-RGC"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hFt-5M-OG3">
+                        <rect key="frame" x="89" y="12" width="297" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="X3n-fg-U8b"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="hFt-5M-OG3" firstAttribute="leading" secondItem="qlD-Nm-unu" secondAttribute="trailing" constant="27" id="N26-ZS-lZG"/>
+                    <constraint firstItem="qlD-Nm-unu" firstAttribute="leading" secondItem="Bq0-ur-bgh" secondAttribute="leading" constant="20" symbolic="YES" id="Ova-6c-SwE"/>
+                    <constraint firstItem="qlD-Nm-unu" firstAttribute="centerY" secondItem="Bq0-ur-bgh" secondAttribute="centerY" id="kyt-1E-nzO"/>
+                    <constraint firstItem="hFt-5M-OG3" firstAttribute="centerY" secondItem="qlD-Nm-unu" secondAttribute="centerY" id="tiD-nx-CZf"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="indexLbl" destination="qlD-Nm-unu" id="GGA-em-uj2"/>
+                <outlet property="nameLbl" destination="hFt-5M-OG3" id="hP8-5O-LK2"/>
+            </connections>
+            <point key="canvasLocation" x="260.86956521739131" y="-48.214285714285715"/>
+        </tableViewCell>
+    </objects>
+</document>
