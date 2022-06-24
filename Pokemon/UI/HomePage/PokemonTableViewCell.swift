@@ -8,13 +8,19 @@
 import Foundation
 import UIKit
 
-class PokemonItem: UITableViewCell {
+class PokemonTableViewCell: UITableViewCell {
     @IBOutlet weak var indexLbl: UILabel!
     @IBOutlet weak var nameLbl: UILabel!
+    
     
     func updateLbl(index: Int, name: String) {
         self.indexLbl.text = String(index)
         self.nameLbl.text = name
+    }
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
     }
     
     override func prepareForReuse() {
