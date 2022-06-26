@@ -26,6 +26,8 @@ class HomePage: UIViewController {
         } failure: {
             print("faillllllll")
         }
+        
+       
 
     }
 
@@ -41,7 +43,12 @@ extension HomePage: UITableViewDelegate, UITableViewDataSource {
         
         // to du: update
         let cellData = self.pokemonList[indexPath.row]
-        cell.updateLbl(index: cellData.idx, name: cellData.name)
+        cell.updateLbl(index: cellData.idx, name: cellData.name, pokeUrl: cellData.pokemonUrl)
+        cell.tapCallback = {
+            let storyBoard = UIStoryboard(name: "PokemonPage", bundle: nil)
+            let pokePageVC = storyBoard.instantiateViewController(withIdentifier: "pokemon_page") as! PokemonPage
+            self.present(pokePageVC, animated: true)
+        }
         
         // to do: tap
         

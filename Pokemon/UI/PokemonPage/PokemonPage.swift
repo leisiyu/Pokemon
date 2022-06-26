@@ -9,5 +9,6 @@ import Foundation
 import UIKit
 
 class PokemonPage: UIViewController {
+    var url: String = ""
     
 }
