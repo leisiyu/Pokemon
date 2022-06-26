@@ -40,7 +40,8 @@ extension HomePage: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "pokemon_tableView_cell", for: indexPath) as! PokemonTableViewCell
         
         // to du: update
-        cell.updateLbl(index: indexPath.row, name: self.pokemonList[indexPath.row].name)
+        let cellData = self.pokemonList[indexPath.row]
+        cell.updateLbl(index: cellData.idx, name: cellData.name)
         
         // to do: tap
         
