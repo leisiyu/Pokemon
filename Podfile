@@ -7,6 +7,7 @@ target 'Pokemon' do
 
   # Pods for Pokemon
   pod 'Alamofire'
+  pod 'SwiftyJSON'
 
   target 'PokemonTests' do
     inherit! :search_paths

@@ -14,6 +14,7 @@ class PokemonTableViewCell: UITableViewCell {
     
     
     func updateLbl(index: Int, name: String) {
+        print("haha22222", index)
         self.indexLbl.text = String(index)
         self.nameLbl.text = name
     }
