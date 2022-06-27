@@ -9,17 +9,26 @@ import Foundation
 import SwiftyJSON
 
 public final class ModelPokemon: Mappable {
+    public let id: String
     public let name: String
-    public let pokemonUrl: String
-    public let idx: Int
+    public let baseExperience: Int
+    public let height: Int
+    public let isDefault: Bool
+    public let order: Int
+    public let weight: Int
+    
     
     
     
     
     public required init(_ json: JSON) {
+        self.id = json["id"].stringValue
         self.name = json["name"].stringValue
-        self.pokemonUrl = json["url"].stringValue
-        let strs = self.pokemonUrl.components(separatedBy: "/")
-        self.idx = Int(strs[strs.count - 2]) ?? 1
+        self.baseExperience = json["base_experience"].intValue
+        self.height = json["height"].intValue
+        self.isDefault = json["is_default"].boolValue
+        self.order = json["order"].intValue
+        self.weight = json["weight"].intValue
+        
     }
 }

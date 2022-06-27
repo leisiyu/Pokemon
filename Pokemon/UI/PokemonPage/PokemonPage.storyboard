@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <device id="retina6_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -13,15 +13,30 @@
             <objects>
                 <viewController storyboardIdentifier="pokemon_page" id="Y6W-OH-hqX" customClass="PokemonPage" customModule="Pokemon" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="x2H-lv-vni">
+                                <rect key="frame" x="0.0" y="44" width="428" height="848"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="x2H-lv-vni" secondAttribute="bottom" id="MFj-Nx-Wnf"/>
+                            <constraint firstItem="x2H-lv-vni" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="MR8-Ri-F52"/>
+                            <constraint firstItem="x2H-lv-vni" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="l7g-Bt-hHG"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="x2H-lv-vni" secondAttribute="trailing" id="o1l-1R-wLK"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="pokeTableView" destination="x2H-lv-vni" id="EIK-yt-FVv"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="139" y="61"/>
+            <point key="canvasLocation" x="135.98130841121494" y="60.90712742980562"/>
         </scene>
     </scenes>
     <resources>

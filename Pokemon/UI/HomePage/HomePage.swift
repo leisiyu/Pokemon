@@ -16,12 +16,12 @@ class HomePage: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        // register cells
         self.pokemonTableView.register(UINib(nibName: "PokemonTableViewCell", bundle: nil), forCellReuseIdentifier: "pokemon_tableView_cell")
         self.pokemonTableView.register(UINib(nibName: "PokemonTableViewHeader", bundle: nil), forHeaderFooterViewReuseIdentifier: "pokemon_tableView_header")
         
         NetworkManager.shared.getPokemonList { data in
             self.pokemonList = self.pokemonList + data
-            print(self.pokemonList.count)
             self.pokemonTableView.reloadData()
         } failure: {
             print("faillllllll")
@@ -47,6 +47,7 @@ extension HomePage: UITableViewDelegate, UITableViewDataSource {
         cell.tapCallback = {
             let storyBoard = UIStoryboard(name: "PokemonPage", bundle: nil)
             let pokePageVC = storyBoard.instantiateViewController(withIdentifier: "pokemon_page") as! PokemonPage
+            pokePageVC.updateParams(url: cellData.pokemonUrl)
             self.present(pokePageVC, animated: true)
         }
         

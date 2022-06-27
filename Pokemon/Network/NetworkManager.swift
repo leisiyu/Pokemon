@@ -20,8 +20,6 @@ public final class NetworkManager: NSObject {
     func mapArray<T: Mappable>(data: JSON) throws -> [T]{
         var obj: [T] = []
         for item in data.arrayValue {
-            print(type(of: item))
-            print(item)
             obj.append(T.init(item)!)
         }
         return obj
@@ -45,7 +43,6 @@ extension NetworkManager {
             
             switch response.result {
             case let .success(data):
-                
                 do {
                     let json = JSON(data)
                     let pokemonListData: [ModelPokemonItem] = try mapArray(data: json["results"])
@@ -55,10 +52,31 @@ extension NetworkManager {
                     print("fail")
                 }
                 
-            case .failure(let apiError):
+            case let .failure(apiError):
                 print(apiError.localizedDescription)
             }
            
+        }
+    }
+    
+    func getPokemonData(
+        url: String,
+        success: @escaping (ModelPokemon) -> Void,
+        failure: @escaping () -> Void
+    ) {
+        AF.request(url).responseJSON { [self] response in
+            switch response.result {
+            case let .success(data):
+                do {
+                    let json = JSON(data)
+                    let pokemonData: ModelPokemon = try mapObject(data: json)
+                    success(pokemonData)
+                } catch {
+                    print("fail")
+                }
+            case let .failure(apiError):
+                print(apiError.localizedDescription)
+            }
         }
     }
     
