@@ -17,6 +17,8 @@ public final class ModelPokemon: Mappable {
     public let order: Int
     public let weight: Int
     public let images: [String: JSON]
+    public let species: [String: JSON]
+    public let pokeType: [JSON]
     
     
     
@@ -30,5 +32,7 @@ public final class ModelPokemon: Mappable {
         self.order = json["order"].intValue
         self.weight = json["weight"].intValue
         self.images = json["sprites"].dictionaryValue
+        self.species = json["species"].dictionaryValue
+        self.pokeType = json["types"].arrayValue
     }
 }

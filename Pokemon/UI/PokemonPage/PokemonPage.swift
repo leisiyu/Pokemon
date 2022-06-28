@@ -20,12 +20,13 @@ class PokemonPage: UIViewController {
     }
     
     enum AttributesType {
-//        case pokeType
+        case pokeType
         case height
         case weight
         case order
         case isDefault
         case baseExperience
+//        case species
     }
     
     var sectionList: [SectionType] = [
@@ -34,9 +35,11 @@ class PokemonPage: UIViewController {
     ]
     var attributesList: [AttributesType] = [
         .order,
+//        .species,
         .height,
         .weight,
         .baseExperience,
+        .pokeType,
         .isDefault
     ]
     var pokeData: ModelPokemon?
@@ -56,7 +59,8 @@ class PokemonPage: UIViewController {
                 self.pokeData = pokeData
                 self.pokeTableView.reloadData()
             } failure: {
-                print("2222")
+                
+                
             }
 
         } else {
@@ -118,6 +122,17 @@ extension PokemonPage: UITableViewDelegate, UITableViewDataSource {
             case .baseExperience:
                 name = "Base Experience:"
                 attr = String(self.pokeData?.baseExperience ?? 0)
+//            case .species:
+//                name = "Species:"
+//                attr = self.pokeData?.species["name"]?.stringValue ?? ""
+            case .pokeType:
+                name = "Types:"
+                if let pokeType = self.pokeData?.pokeType {
+                    for item in pokeType {
+                        attr = String(format: "%@  %@", attr, item["type"]["name"].stringValue)
+                    }
+                }
+                
             }
             
             cell.updateCell(name: name, attribute: attr)
