@@ -13,15 +13,35 @@ class PokeAvatar: UITableViewCell {
     
     @IBOutlet weak var avatarImgView: UIImageView!
     @IBOutlet weak var nameLbl: UILabel!
+    @IBOutlet weak var frontBtn: UIButton!
+    @IBOutlet weak var backBtn: UIButton!
+
+    var pokeData:ModelPokemon?
     
     func updateCell(data: ModelPokemon?) {
         if let pokeData = data {
+            self.pokeData = pokeData
             self.nameLbl.text = pokeData.name
-            let url = URL(string: pokeData.images["front_default"]?.stringValue ?? "")
-            self.avatarImgView.kf.setImage(with: url)
+            let urlFront = pokeData.images["front_default"]?.stringValue ?? ""
+            
+            self.avatarImgView.kf.setImage(with: URL(string: urlFront))
         } else {
             print("error")
         }
         
+    }
+    
+    @IBAction func leftBtnTapped(_ sender: Any) {
+        if let pokeData = self.pokeData {
+            let urlFront = pokeData.images["front_default"]?.stringValue ?? ""
+            self.avatarImgView.kf.setImage(with: URL(string: urlFront))
+        }
+    }
+
+    @IBAction func rightBtnTapped(_ sender: Any) {
+        if let pokeData = self.pokeData {
+            let urlBack = pokeData.images["back_default"]?.stringValue ?? ""
+            self.avatarImgView.kf.setImage(with: URL(string: urlBack))
+        }
     }
 }
