@@ -18,6 +18,13 @@ class PokeAvatar: UITableViewCell {
 
     var pokeData:ModelPokemon?
     
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        self.nameLbl.adjustsFontSizeToFitWidth = true
+        self.nameLbl.minimumScaleFactor = 0.75
+    }
+    
     func updateCell(data: ModelPokemon?) {
         if let pokeData = data {
             self.pokeData = pokeData

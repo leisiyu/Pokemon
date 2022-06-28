@@ -24,18 +24,6 @@
                             <constraint firstAttribute="width" constant="125" id="qQI-OQ-vPp"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xGg-Sg-cLN">
-                        <rect key="frame" x="172" y="17" width="57" height="24"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pikachu" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zb8-mc-sln">
-                        <rect key="frame" x="244" y="17" width="69.5" height="24"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gn9-gW-KvJ">
                         <rect key="frame" x="180" y="88" width="65" height="31"/>
                         <constraints>
@@ -66,21 +54,26 @@
                             <action selector="rightBtnTapped:" destination="5ha-L7-fV6" eventType="touchUpInside" id="JAs-zI-nwA"/>
                         </connections>
                     </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pikachu" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zb8-mc-sln">
+                        <rect key="frame" x="175" y="20" width="209" height="24"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="xGg-Sg-cLN" firstAttribute="leading" secondItem="nTu-oB-tO3" secondAttribute="trailing" constant="27" id="9aj-k3-CGR"/>
                     <constraint firstItem="qb6-2K-8LI" firstAttribute="leading" secondItem="Gn9-gW-KvJ" secondAttribute="trailing" constant="30" id="HZR-Ji-2wn"/>
                     <constraint firstItem="Gn9-gW-KvJ" firstAttribute="leading" secondItem="nTu-oB-tO3" secondAttribute="trailing" constant="35" id="HwI-8z-Q0I"/>
-                    <constraint firstItem="Zb8-mc-sln" firstAttribute="centerY" secondItem="xGg-Sg-cLN" secondAttribute="centerY" id="KQz-Eo-f3x"/>
                     <constraint firstAttribute="bottom" secondItem="Gn9-gW-KvJ" secondAttribute="bottom" constant="26" id="MK8-wX-L01"/>
-                    <constraint firstItem="Zb8-mc-sln" firstAttribute="leading" secondItem="xGg-Sg-cLN" secondAttribute="trailing" constant="15" id="e9Y-0K-w8l"/>
+                    <constraint firstAttribute="trailing" secondItem="Zb8-mc-sln" secondAttribute="trailing" constant="30" id="XLz-sI-qS9"/>
+                    <constraint firstItem="Zb8-mc-sln" firstAttribute="leading" secondItem="nTu-oB-tO3" secondAttribute="trailing" constant="30" id="a8f-eb-CRn"/>
                     <constraint firstItem="Gn9-gW-KvJ" firstAttribute="centerY" secondItem="qb6-2K-8LI" secondAttribute="centerY" id="gpQ-yX-F1g"/>
+                    <constraint firstItem="Zb8-mc-sln" firstAttribute="top" secondItem="PGd-kj-zJz" secondAttribute="top" constant="20" symbolic="YES" id="pxv-0f-ZcS"/>
                 </constraints>
             </tableViewCellContentView>
             <constraints>
                 <constraint firstItem="nTu-oB-tO3" firstAttribute="leading" secondItem="5ha-L7-fV6" secondAttribute="leading" constant="20" id="Hq3-kA-QAI"/>
                 <constraint firstItem="nTu-oB-tO3" firstAttribute="centerY" secondItem="5ha-L7-fV6" secondAttribute="centerY" id="a47-P8-2hw"/>
-                <constraint firstItem="xGg-Sg-cLN" firstAttribute="top" secondItem="5ha-L7-fV6" secondAttribute="top" constant="17" id="nFH-DC-hSg"/>
             </constraints>
             <connections>
                 <outlet property="avatarImgView" destination="nTu-oB-tO3" id="hwJ-kg-0qc"/>
@@ -88,7 +81,7 @@
                 <outlet property="frontBtn" destination="Gn9-gW-KvJ" id="1O9-iw-odI"/>
                 <outlet property="nameLbl" destination="Zb8-mc-sln" id="4qt-9V-gyU"/>
             </connections>
-            <point key="canvasLocation" x="237.68115942028987" y="134.59821428571428"/>
+            <point key="canvasLocation" x="237.68115942028987" y="134.26339285714286"/>
         </tableViewCell>
     </objects>
     <resources>
