@@ -17,7 +17,7 @@ class PokemonTableViewCell: UITableViewCell {
     
     
     func updateLbl(index: Int, name: String, pokeUrl: String) {
-        self.indexLbl.text = String(format: "#%03d", index)
+        self.indexLbl.text = String(format: "#%d", index)
         self.nameLbl.text = name
         self.url = pokeUrl
     }

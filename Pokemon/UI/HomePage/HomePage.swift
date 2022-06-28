@@ -9,6 +9,7 @@ import Foundation
 import UIKit
 
 class HomePage: UIViewController {
+    @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var pokemonTableView: UITableView!
     
     private var pokemonList: [ModelPokemonItem] = []
@@ -18,13 +19,17 @@ class HomePage: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        self.searchBar.delegate = self
+        
         // register cells
         self.pokemonTableView.register(UINib(nibName: "PokemonTableViewCell", bundle: nil), forCellReuseIdentifier: "pokemon_tableView_cell")
         self.pokemonTableView.register(UINib(nibName: "PokemonTableViewHeader", bundle: nil), forHeaderFooterViewReuseIdentifier: "pokemon_tableView_header")
         
+        if #available(iOS 15.0, *) {
+            UITableView.appearance().sectionHeaderTopPadding = CGFloat(0)
+        }
         
         self.loadData()
-
     }
     
     func loadData() {
@@ -73,6 +78,18 @@ extension HomePage: UITableViewDelegate, UITableViewDataSource {
         return header
     }
     
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        return nil
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 45
+    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 0.01
+    }
+    
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let offset = scrollView.contentOffset
         let bounds = scrollView.bounds
@@ -99,6 +116,25 @@ extension HomePage: UITableViewDelegate, UITableViewDataSource {
         if (!self.isLoading && isNeedLoadMore) {
             self.loadData()
         }
+    }
+}
+
+extension HomePage: UISearchBarDelegate {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+        
+        
+        if let searchText = self.searchBar.text {
+            let searchUrl = String(format: "%@/%@", PokemonAPI.pokemonList.rawValue, searchText.trimmingCharacters(in: .whitespacesAndNewlines)).lowercased()
+            print(searchUrl)
+            
+            let storyBoard = UIStoryboard(name: "PokemonPage", bundle: nil)
+            let pokePageVC = storyBoard.instantiateViewController(withIdentifier: "pokemon_page") as! PokemonPage
+            pokePageVC.updateParams(url: searchUrl)
+            self.present(pokePageVC, animated: true)
+        }
+        
+
     }
 }
 

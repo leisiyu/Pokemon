@@ -15,17 +15,17 @@
                 <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Index" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qlD-Nm-unu">
-                        <rect key="frame" x="25" y="11.5" width="42" height="21"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="#0001" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qlD-Nm-unu">
+                        <rect key="frame" x="20" y="11.5" width="60" height="21"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="42" id="WkJ-Yf-RGC"/>
+                            <constraint firstAttribute="width" constant="60" id="WkJ-Yf-RGC"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hFt-5M-OG3">
-                        <rect key="frame" x="102" y="11.5" width="45" height="21"/>
+                        <rect key="frame" x="115" y="11.5" width="45" height="21"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="X3n-fg-U8b"/>
                         </constraints>
@@ -36,7 +36,7 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="hFt-5M-OG3" firstAttribute="leading" secondItem="qlD-Nm-unu" secondAttribute="trailing" constant="35" id="N26-ZS-lZG"/>
-                    <constraint firstItem="qlD-Nm-unu" firstAttribute="leading" secondItem="Bq0-ur-bgh" secondAttribute="leading" constant="25" id="Ova-6c-SwE"/>
+                    <constraint firstItem="qlD-Nm-unu" firstAttribute="leading" secondItem="Bq0-ur-bgh" secondAttribute="leading" constant="20" id="Ova-6c-SwE"/>
                     <constraint firstItem="qlD-Nm-unu" firstAttribute="centerY" secondItem="Bq0-ur-bgh" secondAttribute="centerY" id="kyt-1E-nzO"/>
                     <constraint firstItem="hFt-5M-OG3" firstAttribute="centerY" secondItem="qlD-Nm-unu" secondAttribute="centerY" id="tiD-nx-CZf"/>
                 </constraints>
