@@ -32,6 +32,7 @@ class HomePage: UIViewController {
         self.loadData()
     }
     
+    // get pokemon list data
     func loadData() {
         self.isLoading = true
         NetworkManager.shared.getPokemonList(nextUrl: self.nextUrl){ data, nextUrl in
@@ -41,12 +42,28 @@ class HomePage: UIViewController {
             self.pokemonTableView.reloadData()
         } failure: {
             self.isLoading = false
-            print("faillllllll")
+            self.showAlert {
+                self.loadData()
+            }
         }
+    }
+    
+    func showAlert(callback: @escaping()->()) {
+        let errorAlertController = UIAlertController(title: "Error", message: "Something wrong, please try again.", preferredStyle: .alert)
+        
+        let okAction = UIAlertAction(title: "OK", style: .default) { UIAlertAction in
+            callback()
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .default)
+        
+        errorAlertController.addAction(okAction)
+        errorAlertController.addAction(cancelAction)
+        self.present(errorAlertController, animated: true)
     }
 
 }
 
+// UITableView
 extension HomePage: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.pokemonList.count
@@ -59,10 +76,20 @@ extension HomePage: UITableViewDelegate, UITableViewDataSource {
         let cellData = self.pokemonList[indexPath.row]
         cell.updateLbl(index: cellData.idx, name: cellData.name, pokeUrl: cellData.pokemonUrl)
         cell.tapCallback = {
-            let storyBoard = UIStoryboard(name: "PokemonPage", bundle: nil)
-            let pokePageVC = storyBoard.instantiateViewController(withIdentifier: "pokemon_page") as! PokemonPage
-            pokePageVC.updateParams(url: cellData.pokemonUrl)
-            self.present(pokePageVC, animated: true)
+
+            NetworkManager.shared.getPokemonData(url: cellData.pokemonUrl) {pokeData in
+                
+                let storyBoard = UIStoryboard(name: "PokemonPage", bundle: nil)
+                let pokePageVC = storyBoard.instantiateViewController(withIdentifier: "pokemon_page") as! PokemonPage
+                pokePageVC.updateParams(pokeData: pokeData)
+                self.present(pokePageVC, animated: true)
+                
+            } failure: {
+                self.showAlert {
+                    print("error")
+                }
+                
+            }
         }
         
         return cell
@@ -100,8 +127,8 @@ extension HomePage: UITableViewDelegate, UITableViewDataSource {
         let maximumOffset = size.height
         
         var isNeedLoadMore = false
-        // contents' height <= tableview's height
         if (scrollViewHeight >= maximumOffset) {
+            // contents' height <= tableview's height
             if !self.nextUrl.isEmpty {
                 isNeedLoadMore = true
             }
@@ -119,6 +146,7 @@ extension HomePage: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
+// UISearchBar
 extension HomePage: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
@@ -128,10 +156,19 @@ extension HomePage: UISearchBarDelegate {
             let searchUrl = String(format: "%@/%@", PokemonAPI.pokemonList.rawValue, searchText.trimmingCharacters(in: .whitespacesAndNewlines)).lowercased()
             print(searchUrl)
             
-            let storyBoard = UIStoryboard(name: "PokemonPage", bundle: nil)
-            let pokePageVC = storyBoard.instantiateViewController(withIdentifier: "pokemon_page") as! PokemonPage
-            pokePageVC.updateParams(url: searchUrl)
-            self.present(pokePageVC, animated: true)
+            NetworkManager.shared.getPokemonData(url: searchUrl) {pokeData in
+                
+                let storyBoard = UIStoryboard(name: "PokemonPage", bundle: nil)
+                let pokePageVC = storyBoard.instantiateViewController(withIdentifier: "pokemon_page") as! PokemonPage
+                pokePageVC.updateParams(pokeData: pokeData)
+                self.present(pokePageVC, animated: true)
+                
+            } failure: {
+                self.showAlert {
+                    self.searchBar.text = ""
+                }
+                
+            }
         }
         
 

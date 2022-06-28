@@ -21,7 +21,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lea-TF-7rv">
-                    <rect key="frame" x="103" y="16" width="45" height="21"/>
+                    <rect key="frame" x="112" y="16" width="45" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
@@ -33,7 +33,7 @@
                 <constraint firstItem="kCT-ID-Iga" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="25" id="O5F-vL-UGH"/>
                 <constraint firstItem="Lea-TF-7rv" firstAttribute="centerY" secondItem="kCT-ID-Iga" secondAttribute="centerY" id="biA-jb-iuu"/>
                 <constraint firstItem="kCT-ID-Iga" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" id="fdR-gJ-KSe"/>
-                <constraint firstItem="Lea-TF-7rv" firstAttribute="leading" secondItem="kCT-ID-Iga" secondAttribute="trailing" constant="36" id="k7E-K9-rFM"/>
+                <constraint firstItem="Lea-TF-7rv" firstAttribute="leading" secondItem="kCT-ID-Iga" secondAttribute="trailing" constant="45" id="k7E-K9-rFM"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="150.72463768115944" y="-142.96875"/>

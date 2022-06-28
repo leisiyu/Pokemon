@@ -35,6 +35,7 @@ public final class NetworkManager: NSObject {
 
 extension NetworkManager {
     
+    // pokemon list
     func getPokemonList(
         nextUrl: String,
         success: @escaping ([ModelPokemonItem], String) -> Void,
@@ -52,16 +53,18 @@ extension NetworkManager {
                     
                     success(pokemonListData, nextUrl)
                 } catch {
-                    print("fail")
+                    failure()
                 }
                 
             case let .failure(apiError):
+                failure()
                 print(apiError.localizedDescription)
             }
            
         }
     }
     
+    // pokemon detail
     func getPokemonData(
         url: String,
         success: @escaping (ModelPokemon) -> Void,
@@ -75,9 +78,10 @@ extension NetworkManager {
                     let pokemonData: ModelPokemon = try mapObject(data: json)
                     success(pokemonData)
                 } catch {
-                    print("fail")
+                    failure()
                 }
             case let .failure(apiError):
+                failure()
                 print(apiError.localizedDescription)
             }
         }

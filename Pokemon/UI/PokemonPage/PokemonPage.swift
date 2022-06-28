@@ -10,7 +10,6 @@ import UIKit
 
 
 class PokemonPage: UIViewController {
-    var url: String = ""
     
     @IBOutlet weak var pokeTableView: UITableView!
     
@@ -54,23 +53,15 @@ class PokemonPage: UIViewController {
         self.pokeTableView.dataSource = self
         self.pokeTableView.delegate = self
         
-        if !self.url.isEmpty {
-            NetworkManager.shared.getPokemonData(url: self.url) {pokeData in
-                self.pokeData = pokeData
-                self.pokeTableView.reloadData()
-            } failure: {
-                
-                
-            }
-
-        } else {
-            print("error")
-        }
-        
     }
     
-    func updateParams(url: String) {
-        self.url = url
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.pokeTableView.reloadData()
+    }
+    
+    func updateParams(pokeData: ModelPokemon) {
+        self.pokeData = pokeData
     }
 }
 
