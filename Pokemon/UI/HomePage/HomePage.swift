@@ -12,6 +12,8 @@ class HomePage: UIViewController {
     @IBOutlet weak var pokemonTableView: UITableView!
     
     private var pokemonList: [ModelPokemonItem] = []
+    private var nextUrl: String = ""
+    private var isLoading = false
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -20,15 +22,22 @@ class HomePage: UIViewController {
         self.pokemonTableView.register(UINib(nibName: "PokemonTableViewCell", bundle: nil), forCellReuseIdentifier: "pokemon_tableView_cell")
         self.pokemonTableView.register(UINib(nibName: "PokemonTableViewHeader", bundle: nil), forHeaderFooterViewReuseIdentifier: "pokemon_tableView_header")
         
-        NetworkManager.shared.getPokemonList { data in
+        
+        self.loadData()
+
+    }
+    
+    func loadData() {
+        self.isLoading = true
+        NetworkManager.shared.getPokemonList(nextUrl: self.nextUrl){ data, nextUrl in
             self.pokemonList = self.pokemonList + data
+            self.nextUrl = nextUrl
+            self.isLoading = false
             self.pokemonTableView.reloadData()
         } failure: {
+            self.isLoading = false
             print("faillllllll")
         }
-        
-       
-
     }
 
 }
@@ -62,6 +71,34 @@ extension HomePage: UITableViewDelegate, UITableViewDataSource {
         let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: "pokemon_tableView_header") as! PokemonTableViewHeader
         
         return header
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let offset = scrollView.contentOffset
+        let bounds = scrollView.bounds
+        let size = scrollView.contentSize
+        let inset = scrollView.contentInset
+        let scrollViewHeight = bounds.size.height
+        let currentOffset = offset.y + scrollViewHeight - inset.bottom
+        let maximumOffset = size.height
+        
+        var isNeedLoadMore = false
+        // contents' height <= tableview's height
+        if (scrollViewHeight >= maximumOffset) {
+            if !self.nextUrl.isEmpty {
+                isNeedLoadMore = true
+            }
+        } else {
+            //
+            let space = currentOffset - maximumOffset
+            if (space < 20 && !self.nextUrl.isEmpty) {
+                isNeedLoadMore = true
+            }
+        }
+        
+        if (!self.isLoading && isNeedLoadMore) {
+            self.loadData()
+        }
     }
 }
 

@@ -36,18 +36,21 @@ public final class NetworkManager: NSObject {
 extension NetworkManager {
     
     func getPokemonList(
-        success: @escaping ([ModelPokemonItem]) -> Void,
+        nextUrl: String,
+        success: @escaping ([ModelPokemonItem], String) -> Void,
         failure: @escaping () -> Void
     ) {
-        AF.request(PokemonAPI.pokemonList.rawValue).responseJSON { [self] response in
+        let url = nextUrl.isEmpty ? PokemonAPI.pokemonList.rawValue : nextUrl
+        AF.request(url).responseJSON { [self] response in
             
             switch response.result {
             case let .success(data):
                 do {
                     let json = JSON(data)
                     let pokemonListData: [ModelPokemonItem] = try mapArray(data: json["results"])
+                    let nextUrl = json["next"].stringValue
                     
-                    success(pokemonListData)
+                    success(pokemonListData, nextUrl)
                 } catch {
                     print("fail")
                 }
