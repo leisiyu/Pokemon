@@ -22,7 +22,7 @@ class PokeAvatar: UITableViewCell {
         super.awakeFromNib()
         
         self.nameLbl.adjustsFontSizeToFitWidth = true
-        self.nameLbl.minimumScaleFactor = 0.75
+        self.nameLbl.minimumScaleFactor = 0.5
     }
     
     func updateCell(data: ModelPokemon?) {

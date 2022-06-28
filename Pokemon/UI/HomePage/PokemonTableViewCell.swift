@@ -25,6 +25,9 @@ class PokemonTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
+        self.nameLbl.adjustsFontSizeToFitWidth = true
+        self.nameLbl.minimumScaleFactor = 0.5
+        
         self.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tapped(sender: ))))
     }
     
