@@ -51,8 +51,6 @@ extension HomePage: UITableViewDelegate, UITableViewDataSource {
             self.present(pokePageVC, animated: true)
         }
         
-        // to do: tap
-        
         return cell
     }
     
