@@ -16,7 +16,7 @@ public final class ModelPokemon: Mappable {
     public let isDefault: Bool
     public let order: Int
     public let weight: Int
-    
+    public let images: [String: JSON]
     
     
     
@@ -29,6 +29,6 @@ public final class ModelPokemon: Mappable {
         self.isDefault = json["is_default"].boolValue
         self.order = json["order"].intValue
         self.weight = json["weight"].intValue
-        
+        self.images = json["sprites"].dictionaryValue
     }
 }

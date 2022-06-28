@@ -89,7 +89,7 @@ extension PokemonPage: UITableViewDelegate, UITableViewDataSource {
         if indexPath.section == SectionType.avatar.rawValue {
             let cell = tableView.dequeueReusableCell(withIdentifier: "poke_avatar", for: indexPath) as! PokeAvatar
             
-            cell.updateCell(name: self.pokeData?.name)
+            cell.updateCell(data: self.pokeData)
             
             return cell
         } else {
